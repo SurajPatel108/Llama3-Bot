@@ -36,13 +36,19 @@ class TradingSimulation:
         response = self.ollama_instance.get_response(prompt)
 
         if response == "Buy":
-            print("Buying the stock...")
-            self.state['last_trade_decision'] = 'Buy'
-            self.serialize_state()
+             trade_decision = 'Buy'
         elif response == "Sell":
-            print("Selling the stock...")
-            self.state['last_trade_decision'] = 'Sell'
-            self.serialize_state()
+             trade_decision = 'Sell'
+        elif response in ["Hold", "No change"]:
+             trade_decision = 'Hold'
+        elif response == "Pass":
+            trade_decision = 'Pass'
+        else:
+            trade_decision = 'Hold'
+
+    print(f"Trade decision: {trade_decision}")
+    self.state['last_trade_decision'] = trade_decision
+    self.serialize_state()
 
 TradingSimulation().make_trade_decision()
 
