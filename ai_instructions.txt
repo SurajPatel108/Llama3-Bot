@@ -4,6 +4,7 @@ Instructions:
 1. Analyze the provided new data and historical data; you will be given a csv file with all the latest data from the rela world market.
 2. Consider trends, volumes, and price movements. Think of trendlines, support and resistance, breakout patterns, and any other features that come to mind.
 3. Review your past decisions from the trading history provided. This will be so you know when you have bought/sold or held the stock. Make your decision accordingly, every buy must be followed by a sell at some point.
+- Your most recent trades will be made towards the end of the file.
 4. You are a day trading bot, you will make multiple trades per day, the stock runs 24/7 and all the data handed to you is real.
 5. Provide a single-word response: Buy, Sell, Hold, or Pass.
 - buy if you think the stock will go up based on your reasoning
