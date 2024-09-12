@@ -11,7 +11,7 @@ BASE_URL = 'https://paper-api.alpaca.markets/v2'
 
 api = REST(API_KEY, API_SECRET, BASE_URL, api_version='v2')
 
-amount = 0.02
+amount = 0.02 #10% of portfolio risdked
 
 class TradingSimulation:
     def __init__(self):
@@ -79,7 +79,7 @@ class TradingSimulation:
     def make_trade_decision(self):
         data = self.get_new_data()
         trading_history = "\n".join(
-            [f"{state['timestamp']}: {state['decision']}" for state in self.traderbot_state])  # Last 5 decisions
+            [f"{state['timestamp']}: {state['decision']}" for state in self.traderbot_state])
 
         prompt = f"""{self.instructions}
 
