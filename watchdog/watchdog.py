@@ -13,7 +13,7 @@ class FileChangeHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if not event.is_directory and event.src_path.endswith(self.file_to_watch):
             current_time = time.time()
-            if current_time - self.last_modified > 1:  # Debounce mechanism
+            if current_time - self.last_modified > 1:  # debounce to check if file was modified
                 self.last_modified = current_time
                 print(f"{event.src_path} has been modified")
                 self.run_script()
