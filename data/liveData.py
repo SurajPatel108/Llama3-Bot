@@ -56,23 +56,21 @@ def wait_until_next_run():
     return max(wait_time, 0)
 
 
-# Initial run to clear file and write all data
+# clears the file and writes all the new data
 write_to_csv(get_btc_data(limit=1000))
 print(f"CSV updated at {datetime.now(timezone.utc)}")
 
 while True:
     wait_time = wait_until_next_run()
 
-    # Countdown timer in seconds
+    # made a countdown timer
     while wait_time > 0:
         print(f"Next update in {int(wait_time)} seconds...", end='\r')
         time.sleep(1)
         wait_time -= 1
 
-    # Update the CSV file
     write_to_csv(get_btc_data(limit=1000))
     print(f"\nCSV updated at {datetime.now(timezone.utc)}")
 
-    # Estimate time before next update
     next_wait_time = wait_until_next_run()
     print(f"Next update will happen in approximately {int(next_wait_time)} seconds.")
